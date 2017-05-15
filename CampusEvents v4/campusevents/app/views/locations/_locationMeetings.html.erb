@@ -1,0 +1,15 @@
+<br><%= pluralize(@location.meetings.count, "meeting") %>
+	at this location: </b><br />
+	
+
+
+
+
+<% @location.meetings.first(5).each do |meetings| %>
+<%= link_to meetings.name, meetings %><br />
+<% end %>
+
+
+
+
+

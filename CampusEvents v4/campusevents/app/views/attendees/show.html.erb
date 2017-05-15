@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<% content_for(:pagetitle) do %>
+Attendee Details
+<% end %>
+
+<%content_for(:sidebar) do %>
+
+<div><b>
+
+	<%= pluralize(@attendee.events.count, "attendee") %>
+
+ in this category:</b></div>
+
+<% @attendee.events.each do |c| %>
+	<%= c.first_name %><br/>
+	
+<% end %>
+
+<% end %>
+
+
+<p>
+  <strong>First name:</strong>
+  <%= @attendee.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @attendee.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @attendee.email %>
+</p>
+
+<%= link_to 'Edit', edit_attendee_path(@attendee), :class =>"btn btn-warning" %> |
+<%= link_to 'Back', attendees_path, :class=>"btn btn-info" %>

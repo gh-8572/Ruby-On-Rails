@@ -1,0 +1,12 @@
+<br><%= pluralize(@event.sponsors.count, "sponsor") %>
+
+	at this event: </b><br />
+
+
+<% @event.sponsors.each do |s| %>
+
+	<%= link_to s.name, s %> <br />
+
+<% end %>
+
+
