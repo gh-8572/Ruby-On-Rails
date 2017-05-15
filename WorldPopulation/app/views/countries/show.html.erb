@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_country_path(@country) %> |
+<%= link_to 'Back', countries_path %>
+
+<p>
+  <strong>Country:</strong>
+  <%= @country.name %>
+</p>
+
+<div >
+  <% @country.retrievePopulation(2016).each do |b| %>
+  <div class="card card-1" >
+
+      <p style="text-align:left;"><h6>Age:</h6><%= b["age"] %></p>
+      <p style="text-align:left;"><h6>Females:</h6><%= b["females"] %></p>
+      <p style="text-align:left;"><h6>Males:</h6><%= b["males"] %></p>
+      <p style="text-align:left;"><h6>Total:</h6><%= b["total"] %></p>
+
+
+
+</div>
+<% end %>
+</div>
+
+<%= link_to 'Back', countries_path %>

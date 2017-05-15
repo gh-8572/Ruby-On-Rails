@@ -1,0 +1,45 @@
+<%= form_for(@purchase) do |f| %>
+  <% if @purchase.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
+
+      <ul>
+      <% @purchase.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <h3><%= @concert.name %>Concert</h3>
+  
+  <%= f.hidden_field(:concert_id, :value => @concert.id) %>
+  
+  <div class="field">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :ticket_quantity %><br>
+    <%= f.text_field :ticket_quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_amount %><br>
+    <%= f.text_field :payment_amount, :value => number_with_precision(@concert.price, precision: 2), :readonly => true %>
+  </div>
+  <div class="field">
+    <%= f.label :card_number %><br>
+    <%= f.text_field :card_number %>
+  </div>
+  <div class="field">
+    <%= f.label :card_expiry %><br>
+    <%= f.text_field :card_expiry, :discard_day => true, :start_year => Date.today.year+2, :end_year => Date.today+12, :use_month_numbers => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
